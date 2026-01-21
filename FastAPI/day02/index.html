@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif, bold;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            /* border: #333 solid 2px; */
+        }
+
+        .container {
+            width: 30%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: linear-gradient(45deg, rgb(89, 60, 115) 30%, rgb(112, 38, 181) 30%, rgb(105, 20, 110) 100%);
+            margin-top: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: #333 solid 5px;
+            border-radius: 1rem;
+
+
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #000000;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        form input[type="text"],
+        form input[type="number"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-weight: bold, 16px;
+            font-size: 16px;
+        }
+
+
+
+
+        form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>New patient</h1>
+        <form action="/patients/" method="post">
+            <label for="ID">ID:</label><br>
+            <input type="number" id="ID" name="ID" required><br><br>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age" required><br><br>
+            <label for="condition">Condition:</label><br>
+            <input type="text" id="condition" name="condition" required><br><br>
+            <input type="submit" value="Submit">
+    </div>
+</body>
+
+</html>
+
+
+<!-- endpoint -->
+<!-- /create--json -->
+<!-- /view-- -->
+<!-- /view-patient -->
+<!-- /update-patient -->
+<!-- /delete-patient -->
+<!-- http method -->
+<!-- software-static, dynamic -->
+<!-- GET, POST, PUT, DELETE -->
+<!-- static--calendar-one way communication -->
+<!-- dynamic--time, microsoft excel-two way communication -->
+<!-- CRUD create retrieve update delete,"dynamic software interaction" -->
