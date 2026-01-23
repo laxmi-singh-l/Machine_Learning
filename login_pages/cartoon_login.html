@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twilight- Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #2d0a4e 50%, #1a0033 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            gap: 50px;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .left-section {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 32px;
+            margin-bottom: 60px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .terms {
+            font-size: 12px;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .terms a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .google-btn {
+            width: 100%;
+            padding: 12px;
+            background: #f4a9c4;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .google-btn:hover {
+            background: #f09ab7;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #9b6ba8;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input::placeholder {
+            color: #bbb;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #f4a9c4;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #f4a9c4;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #f09ab7;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .signup-link a {
+            color: #f4a9c4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .right-section {
+            flex: 1;
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .right-section {
+                display: block;
+            }
+        }
+
+        .anime-image {
+            width: 100%;
+            height: 500px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect fill="%23d4a5d4" width="400" height="500"/></svg>');
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(244, 169, 196, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">Twilight</div>
+            <h1>Welcome Back</h1>
+            <p class="terms">Log in to your account to continue</p>
+
+            <button class="google-btn">
+                <span>🔍</span> Log in with Google
+            </button>
+
+            <div class="divider">or</div>
+
+            <form>
+                <div class="form-group">
+                    <input type="email" placeholder="enter email address" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="enter password" required>
+                </div>
+                <button type="submit" class="login-btn">Log In</button>
+            </form>
+
+            <div class="signup-link">
+                Don't have an account?(●'◡'●) <a href="#">Sign Up</a>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="anime-image">
+                <img src="Sign up UI.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

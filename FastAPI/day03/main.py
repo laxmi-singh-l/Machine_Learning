@@ -19,12 +19,17 @@ def about():
 def view():
     return load_data()
 
+
+# where we are recieving patient id as path parameter
+# using path function for validation and documentation
+# ..., means required parameter
 @app.get("/patients/{id}")
-def view_patient(id: str):
+def view_patient(id: str = Path(..., title="The ID of the patient to get", description="This is the unique identifier for each patient", example=1)):
     data = load_data()
 
     if id in data:
         return data[id]
+
 
     return {"error": "patient not found"}
 
@@ -37,3 +42,19 @@ def view_patient_status(id: str):
         return {"status": data[id]["status"]}
 
     return {"error": "patient not found"}
+
+
+# the path funvtion in fastapi is used to providee metadata , validation rules ,and documetation hints for path parameters in API endpoints
+# title : A brief title for the path parameter
+# description : A detailed description of the path parameter
+# example : An example value for the path parameter
+# ge: int = Path(..., title="The ID of the patient to get", description="This is the unique identifier for each patient", example=1)
+# ge : greater than or equal to
+# le : less than or equal to
+# gt : greater than
+# lt : less than than
+# max_length : maximum length of the string
+# min_length : minimum length of the string
+# regex : regular expression to validate the string
+
+# using path function for validation and documentation
