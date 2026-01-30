@@ -3,6 +3,9 @@ from math import e
 from typing import Type
 
 
+from numpy import insert
+
+
 def insert_patient_data(name : str, age : int):
 
     if type(name) == str and type(age) == int:
@@ -16,14 +19,17 @@ def insert_patient_data(name : str, age : int):
 
 
     else:
-        raise TypeError("name must be a string")
+        raise TypeError("name or age must be a string or integer respectively")
 
     # print(name)
     # print(age)
 
     # Here would be the logic to insert patient data into a database
 # Example usage
-insert_patient_data("John Doe", '30')
+insert_patient_data("John Doe", 30) 
+insert_patient_data("Jane Doe", 28)
+
+# The above function works, but it is not very robust.
 
 # in this case we are not validating the types of the inputs, which could lead to issues later on.
 # This function lacks type validation, which can lead to runtime errors if incorrect types are passed.
