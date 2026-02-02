@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML API</title>
+
+
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='image.png') }}");
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin-left: 500px;
+            margin-right: 150px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        body {
+            background-image: url("image.png");
+            background-image: cover;
+            background-image: url(image.png);
+
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin-left: 500px;
+            margin-right: 150px;
+            background-size: cover;
+
+        }
+
+        input,
+        select,
+        textarea {
+            width: 50%;
+            /* Makes fields full width */
+            padding: 12px;
+            border: 1px solid #ccc;
+
+            /* Rounded corners */
+            box-sizing: border-box;
+            /* Includes padding in width calculation */
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            border-radius: 8px;
+            background-color: bisque;
+
+
+
+
+            /* Allows vertical resizing of textareas */
+        }
+
+        button {
+            width: 20%;
+            height: 35px;
+            resize: horizontal;
+            border-radius: 8px;
+            background-color: rgb(85, 181, 181);
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="login">
+        <h1>Patient Information</h1>
+        <form action="\submit" method="post">
+
+            name: <input type="text" name="Name" placeholder="Name" required="required">
+            <br>
+            age: <input type="text" name="Age" placeholder="Age" required="required">
+            <br>
+            Weight:<input type="text" name="Weight" placeholder="Weight" required="required">
+            <br>
+            status:<input type="text" name="status" placeholder="Married" required="required"> <br>
+
+            blood_group:<input type="text" name="blood_group" placeholder="Blood group" required="required">
+
+
+
+            <button class="submit" type="submit">submit</button>
+
+
+        </form>
+
+
+
+    </div>
+
+</body>
+
+</html>

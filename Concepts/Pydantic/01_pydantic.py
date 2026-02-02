@@ -4,16 +4,16 @@ from typing import List , Dict , Optional
 
 class Patient(BaseModel):
     name: str 
-    age: int = Field(..., ge=0, le=110) 
-     # age must be between 0 and 110
-    weight : float
+    age: int = Field(..., ge=0, le=110) # age must be between 0 and 110
+     
+    weight : float= Field(gt = 0) #weight must be greater than 0
     married : Optional[bool] = False
-    allergies : Optional[list[str]] = None = Field(max_length = 5)
+    allergies : Optional[list[str]]  = Field(max_length = 5)
     contact_details : dict[str, str]
     email : EmailStr
     url : AnyUrl
     website : Optional[AnyHttpUrl] = None
-
+# field function is used to provide additional validation and metadata for model fields and to attach mata data to fields
 
 
 def insert_patient_data(patient: Patient):
