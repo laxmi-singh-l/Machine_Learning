@@ -1,3 +1,6 @@
+# New pydantic model
+
+# new data -> update
 from math import e
 from fastapi.responses import JSONResponse
 from fastapi import FastAPI , HTTPException , Path , Query
@@ -5,7 +8,7 @@ from h11 import Data
 from matplotlib.font_manager import json_dump
 from pydantic import BaseModel, Field, computed_field , fields
 import json
-from typing import Annotated
+from typing import Annotated, Optional
 
 
 
@@ -14,11 +17,11 @@ app = FastAPI()
 class Patient(BaseModel):
 
 
-    id : Annotated[str, Field(..., description="ID of the patient", examples=['P001', 'P002'])]
-    name : Annotated[str, Field(..., min_length=2, max_length=50, description="Name of the patient", examples=['John Doe', 'Jane Smith'])]
+    id : Annotated[Optional[str], Field(..., description="ID of the patient", examples=['P001', 'P002'])]
+    name : Annotated[Optional[str], Field(..., min_length=2, max_length=50, description="Name of the patient", examples=['John Doe', 'Jane Smith'])]
     age : Annotated[int , Field(..., description="Age of patient", examples=[20, 40])]
-    blood_group : Annotated[str, Field(..., description="Blood group of patient", examples=["A+", "B-", "O+"])]
-    status: Annotated[str, Field(..., description="situation of patient")]
+    blood_group : Annotated[Optional[str], Field(..., description="Blood group of patient", examples=["A+", "B-", "O+"])]
+    status: Annotated[Optional[str], Field(..., description="situation of patient")]
     # for bmi we can't directly get bmi so we are using computed_field()
     # @computed_field
     # @property
@@ -28,7 +31,7 @@ class Patient(BaseModel):
     # for verdict
     # @computed_field
     # @property
-    # def verdict(self) -> str:
+    # def verdict(self) -> Optional[str]:
 
     #     if self.bmi < 18.5:
     #         return "underwaight"
@@ -38,6 +41,18 @@ class Patient(BaseModel):
     #         return "normal"
     #     else:
     #         return "obese"
+
+class Patientupdate(BaseModel):
+
+    
+    # id : Annotated[Optional[str], Field(..., description="ID of the patient", examples=['P001', 'P002'])]
+    name : Annotated[Optional[str], Field(..., min_length=2, max_length=50, description="Name of the patient", examples=['John Doe', 'Jane Smith'])]
+    age : Annotated[Optional[int] , Field(..., description="Age of patient", examples=[20, 40])]
+    blood_group : Annotated[Optional[str], Field(..., description="Blood group of patient", examples=["A+", "B-", "O+"])]
+    status: Annotated[Optional[str], Field(..., description="situation of patient")]
+
+
+
 
 
 def load_data():
@@ -58,7 +73,7 @@ def hello():
     return "hello this is a report fiel of patients" 
 
 @app.get("/patients/{id}")
-def view_patient(id: str = Path(..., title="The ID of the patient to get", description="This is the unique identifier for each patient", example=1)):
+def view_patient(id: Optional[str] = Path(..., title="The ID of the patient to get", description="This is the unique identifier for each patient", example=1)):
     data = load_data()
 
     if id in data:
@@ -69,7 +84,7 @@ def view_patient(id: str = Path(..., title="The ID of the patient to get", descr
 
 
 @app.get("/patients/{id}/status")
-def view_patient_status(id: str):
+def view_patient_status(id: Optional[str]):
     data = load_data()
 
     if id in data:
@@ -80,7 +95,7 @@ def view_patient_status(id: str):
 
 
 @app.get("/patients/{id}/name")
-def view_patient_name(id : str):
+def view_patient_name(id : Optional[str]):
     data = load_data()
 
     if id in data:
@@ -90,7 +105,7 @@ def view_patient_name(id : str):
 
   
 @app.get('/sort')
-def sort_patients(sort_by: str = Query(..., description='sort on the basis of height ,  weight or bmi'), order: str = Query('asc' , description='sort in asc or desc order')):
+def sort_patients(sort_by: Optional[str] = Query(..., description='sort on the basis of height ,  weight or bmi'), order: Optional[str] = Query('asc' , description='sort in asc or desc order')):
 
     valid_fields = ['age','weight','bmi']
     if sort_by not in valid_fields:
@@ -129,3 +144,11 @@ def create_patient(patient: Patient):
     save_data(data)
     
     return {"message": "Patient created successfully"}
+
+
+@app.put("/edit/{id}")
+def update_patient(id: str, patient_update : Patientupdate): #we are storing data in a variable name patient_update which is pydantic object
+    # what ever data -> load
+    data = load_data()
+
+    
