@@ -1,0 +1,123 @@
+{
+  "S001": {
+    "id": 1,
+    "name": "Aarav Patel",
+    "class": "10",
+    "section": "A",
+    "roll_no": 3,
+    "age": 15,
+    "address": "12 Park Lane, Pune",
+    "marks":40,
+    "grade":"D",
+    "session": "2025-2026"
+  },
+  "S002": {
+    "id": 2,
+    "name": "Isha Verma",
+    "class": "10",
+    "section": "A",
+    "roll_no": 7,
+    "age": 15,
+    "address": "44 Lake View, Pune",
+    "marks":46,
+    "grade":"D",
+    "session": "2025-2026"
+  },
+  "S003": {
+    "id": 3,
+    "name": "Rohan Singh",
+    "class": "10",
+    "section": "B",
+    "roll_no": 2,
+    "age": 16,
+    "address": "9 MG Road, Mumbai",
+    "marks":70,
+    "grade":"B",
+    "session": "2025-2026"
+  },
+  "S004": {
+    "id": 4,
+    "name": "Ananya Gupta",
+    "class": "10",
+    "section": "B",
+    "roll_no": 5,
+    "age": 15,
+    "address": "55 Sunrise Apt, Mumbai",
+    "marks":90,
+    "grade":"A",
+    "session": "2025-2026"
+  },
+  "S005": {
+    "id": 5,
+    "name": "Karan Mehta",
+    "class": "9",
+    "section": "A",
+    "roll_no": 11,
+    "age": 14,
+    "address": "78 Hill Street, Nashik",
+    "marks":87,
+    "grade":"A",
+    "session": "2025-2026"
+  },
+  "S006": {
+    "id": 6,
+    "name": "Priya Nair",
+    "class": "9",
+    "section": "B",
+    "roll_no": 8,
+    "age": 14,
+    "address": "3 Palm Residency, Kochi",
+    "marks": 97,
+    "grade":"A",
+    "session": "2025-2026"
+  },
+  "S007": {
+    "id": 7,
+    "name": "Vivek Rao",
+    "class": "8",
+    "section": "A",
+    "roll_no": 14,
+    "age": 13,
+    "address": "21 River Road, Mysuru",
+    "marks":54,
+    "grade":"C",
+    "session": "2025-2026"
+  },
+  "S008": {
+    "id": 8,
+    "name": "Sneha Das",
+    "class": "8",
+    "section": "B",
+    "roll_no": 4,
+    "age": 13,
+    "address": "67 Green Park, Kolkata",
+    "marks":87,
+    "grade":"A",
+    "session": "2025-2026"
+  },
+  "S009": {
+    "id": 9,
+    "name": "Arjun Kumar",
+    "class": "7",
+    "section": "A",
+    "roll_no": 6,
+    "age": 12,
+    "address": "10 Station Road, Chennai",
+    "marks":98,
+    "grade":"A",
+    "session": "2025-2026"
+  },
+  "S010": {
+    "id": 10,
+    "name": "Meera Iyer",
+    "class": "7",
+    "section": "B",
+    "roll_no": 1,
+    "age": 12,
+    "address": "88 Coastal Ave, Chennai",
+    "marks":100,
+    "grade":"A",
+    "session": "2025-2026"
+  }
+}
+//  GRADE -> a->=80, 80>b<60, 60>c<50 , 50>d<33
