@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Insurance Premium Predictor</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Insurance Premium Prediction</h2>
+
+        <form id="predictForm">
+            <input type="number" name="age" placeholder="Age" min="2" max="99" required />
+            <input type="number" name="weight" placeholder="Weight (kg)" required />
+            <input type="number" step="0.01" name="height" placeholder="Height (meters)" required />
+            <input type="number" name="income_lpa" placeholder="Income (LPA)" required />
+
+            <select name="smoker" required>
+                <option value="">Smoker?</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+
+            <input type="text" name="city" placeholder="City (e.g. Delhi)" required />
+
+            <select name="occupation" required>
+                <option value="">Occupation</option>
+                <option value="retired">Retired</option>
+                <option value="unemployed">Unemployed</option>
+                <option value="bussiness owner">Business Owner</option>
+                <option value="government job">Government Job</option>
+                <option value="student">Student</option>
+                <option value="freelancer">Freelancer</option>
+                <option value="private job">Private Job</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
