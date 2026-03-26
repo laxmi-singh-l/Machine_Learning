@@ -6,6 +6,7 @@ from typing import Annotated, Literal
 from pathlib import Path
 import pickle
 import pandas as pd
+import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 # load ML model (safe)
 
@@ -80,6 +81,7 @@ class incoming_data(BaseModel):
 
 app = FastAPI()
 
+# with the help of this we can allow all origins to access our API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],   # frontend origin

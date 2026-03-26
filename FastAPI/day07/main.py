@@ -1,6 +1,6 @@
 # New pydantic model
-
 # new data -> update
+
 from email import message
 from math import e
 from pyexpat.errors import messages
@@ -13,6 +13,7 @@ from numpy import info
 from pydantic import BaseModel, Field, computed_field , fields
 import json
 from typing import Annotated, Optional
+
 
 
 
@@ -58,15 +59,11 @@ class Patientupdate(BaseModel):
     status: Annotated[Optional[str], Field(..., description="situation of patient")]
 
 
-
-
-
 def load_data():
     with open("patients.json", "r") as f:
         data =  json.load(f)
 
     return data   
-
 
 
 def save_data(data : dict):
@@ -186,6 +183,7 @@ def update_patient(id: str, patient_update : Patientupdate): #we are storing dat
     
 
 
+    
 # delete parameter
 
 @app.delete('/delete/{id}')
