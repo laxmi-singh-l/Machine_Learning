@@ -92,7 +92,7 @@ def view_patient_status(id: Optional[str]):
 
     if id in data:
         return {"status": data[id]["status"]}
-
+f
     return {"error": "patient not found"}
 
 
