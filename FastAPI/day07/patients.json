@@ -1,1 +1,88 @@
-{"P001": {"id": 1, "name": "Rahul Sharma", "age": 32, "blood_group": "A+", "disease": "Diabetes", "status": "Stable", "height": 1.72, "weight": 78, "bmi": 26.4, "verdict": "Overweight"}, "P002": {"id": 2, "name": "Priya Verma", "age": 26, "blood_group": "B+", "disease": "Anemia", "status": "Recovering", "height": 1.6, "weight": 50, "bmi": 19.5, "verdict": "Normal"}, "P003": {"id": 3, "name": "Amit Singh", "age": 45, "blood_group": "O+", "disease": "Hypertension", "status": "Critical", "height": 1.75, "weight": 95, "bmi": 31.0, "verdict": "Obese"}, "P005": {"id": 5, "name": "Suresh Kumar", "age": 54, "blood_group": "B-", "disease": "Heart Disease", "status": "Under Observation", "height": 1.7, "weight": 88, "bmi": 30.4, "verdict": "Obese"}, "P006": {"id": 6, "name": "Anjali Mehta", "age": 34, "blood_group": "O-", "disease": "Asthma", "status": "Stable", "height": 1.62, "weight": 60, "bmi": 22.9, "verdict": "Normal"}, "P007": {"id": 7, "name": "Vikas Patel", "age": 41, "blood_group": "A-", "disease": "Kidney Stone", "status": "Recovering", "height": 1.74, "weight": 72, "bmi": 23.8, "verdict": "Normal"}, "P008": {"id": 8, "name": "Ritu Malhotra", "age": 23, "blood_group": "B+", "disease": "Viral Fever", "status": "Stable", "height": 1.58, "weight": 47, "bmi": 18.8, "verdict": "Normal"}, "P009": {"id": 9, "name": "Manoj Yadav", "age": 38, "blood_group": "O+", "disease": "Back Pain", "status": "Discharged", "height": 1.76, "weight": 85, "bmi": 27.4, "verdict": "Overweight"}, "P010": {"id": 10, "name": "Kavita Joshi", "age": 47, "blood_group": "AB-", "disease": "Thyroid", "status": "Under Treatment", "height": 1.63, "weight": 70, "bmi": 26.3, "verdict": "Overweight"}, "P004": {"name": "abhay singh", "age": 20, "blood_group": "A-", "weight": 100.0, "height": 5.2, "status": "unstable", "bmi": 3.7, "verdict": "underwaight"}, "P011": {"name": "surya singh", "age": 20, "blood_group": "A", "weight": 49.0, "height": 6.2, "status": "unstable", "bmi": 1.27, "verdict": "underwaight"}}
+{
+    "P001": {
+        "id": 1,
+        "name": "Rahul Sharma",
+        "age": 32,
+
+        "disease": "Diabetes",
+        "status": "Stable"
+    },
+    "P002": {
+        "id": 2,
+        "name": "Priya Verma",
+        "age": 26,
+        "blood_group": "B+",
+        "disease": "Anemia",
+        "status": "Recovering"
+    },
+    "P003": {
+        "id": 3,
+        "name": "Amit Singh",
+        "age": 45,
+        "blood_group": "O+",
+        "disease": "Hypertension",
+        "status": "Critical"
+    },
+    "P004": {
+        "id": 4,
+        "name": "Neha Gupta",
+        "age": 29,
+        "blood_group": "AB+",
+        "disease": "Migraine",
+        "status": "Stable"
+    },
+    "P005": {
+        "id": 5,
+        "name": "Suresh Kumar",
+        "age": 54,
+        "blood_group": "B-",
+        "disease": "Heart Disease",
+        "status": "Under Observation"
+    },
+    "P006": {
+        "id": 6,
+        "name": "Anjali Mehta",
+        "age": 34,
+        "blood_group": "O-",
+        "disease": "Asthma",
+        "status": "Stable"
+    },
+    "P007": {
+        "id": 7,
+        "name": "Vikas Patel",
+        "age": 41,
+        "blood_group": "A-",
+        "disease": "Kidney Stone",
+        "status": "Recovering"
+    },
+    "P008": {
+        "id": 8,
+        "name": "Ritu Malhotra",
+        "age": 23,
+        "blood_group": "B+",
+        "disease": "Viral Fever",
+        "status": "Stable"
+    },
+    "P009": {
+        "id": 9,
+        "name": "Manoj Yadav",
+        "age": 38,
+        "blood_group": "O+",
+        "disease": "Back Pain",
+        "status": "Discharged"
+    },
+    "P010": {
+        "id": 10,
+        "name": "Kavita Joshi",
+        "age": 47,
+        "blood_group": "AB-",
+        "disease": "Thyroid",
+        "status": "Under Treatment"
+    },
+    "P011": {
+        "name": "laxmi",
+        "age": 20,
+        "blood_group": "O+",
+        "status": "unstable"
+    }
+}

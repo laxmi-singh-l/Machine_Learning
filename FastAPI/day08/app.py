@@ -1,21 +1,17 @@
-from xmlrpc.client import boolean
-from fastapi.responses import JSONResponse
 from fastapi import FastAPI
 from pydantic import BaseModel, Field, computed_field
-from typing import Annotated, Literal
-from pathlib import Path
+from typing import Literal , Annotated
 import pickle
 import pandas as pd
-import uvicorn
+from starlette.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-# load ML model (safe)
 
-with open('modell.pkl', 'rb') as f:
-        model = pickle.load(f)
+# ----------------------------------------
+# import ml model
+# ----------------------------------------
+with open("pridict_model.pkl", "rb") as f:
+    model = pickle.load(f)
 
-
-# pip uninstall scikit-learn -y
-# pip install scikit-learn==1.6.1
 
 app = FastAPI()
 
@@ -27,17 +23,17 @@ tier_2_cities = [
 ]
 
 
-#  pydantic model to validate incoming data
+# pydantic model to validate incoming data
 
-class incoming_data(BaseModel):
-
-    age: Annotated[int, Field(..., gt=1, lt=100)]
-    weight: Annotated[int, Field(..., description='provide your weight')]
-    height: Annotated[float, Field(..., description='provide height in meter')]
-    income_lpa: Annotated[int, Field(..., description='details about your income in lakhs')]
-    smoker: Annotated[bool, Field(..., description='tell that you are smoker or not')]
-    city: Annotated[str, Field(...)]
-    occupation: Annotated[Literal['retired', 'unemployed', 'bussiness owner', 'government job', 'student', 'freelancer', 'private job'], Field(..., description='your work occupation')]
+class UserInput(BaseModel):
+    age:Annotated[int, Field(..., min_length=1, description="Age in years")]
+    weight:Annotated[float, Field(..., min_length=3, description="Weight in kg")]
+    height:Annotated[float, Field(..., min_length=3, description="Height in m")]
+    income_lpa: Annotated[float , Field(..., min_length=1, description="Income in lpa")]
+    smoker:Annotated[bool, Field(..., description="Smoker or not")]
+    city:Annotated[str, Field(..., min_length=4, description="City")]
+    occupation: Annotated[Literal['retired', 'unemployed', 'business owner', 'government job', 'student', 'freelancer', 'private job'], Field(..., description='your work occupation')]
+# using literal-> for giving options
 
     @computed_field
     @property
@@ -74,12 +70,9 @@ class incoming_data(BaseModel):
             return 2
         else:
             return 3
-        
 
 
-        
 
-app = FastAPI()
 
 # with the help of this we can allow all origins to access our API
 app.add_middleware(
@@ -90,24 +83,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-      
 
-@app.post('/predict')
-def predict_premium(data : incoming_data):
+@app.post("/predict")
+async def predict(data: UserInput):
+
+
+    # input that will be going to model
     input_df = pd.DataFrame([{
         'bmi': data.bmi,
-        'age_group': data.age_group,
-        'lifestyle_risk': data.lifestyle_risk,
-        'city_tier': data.city_tier,
+        'age_group': data.age,
         'income_lpa': data.income_lpa,
-        'occupation': data.occupation,
-    }])
+        'city_tier': data.city_tier,
+        'occupation': data.occupation
 
-    if model is None:
-        return JSONResponse(status_code=500, content={'error': 'model.pkl not found or failed to load'})
+    }])
 
     prediction = model.predict(input_df)[0]
 
-    return JSONResponse(status_code=200, content={'predicted_category': prediction})
-    
-      
+    return JSONResponse(status_code=200,
+                        content=prediction)

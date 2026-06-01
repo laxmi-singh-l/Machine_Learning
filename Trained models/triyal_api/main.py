@@ -12,9 +12,9 @@ from typing import Annotated, Optional
 
 app = FastAPI
 
-class Student(BaseModel):
-
-    id : Annotated[str , Field(..., description="provide your ID ")]
-    name : Annotated[str, Field(..., description="provide your name")]
-    classes : Annotated[str , Field(..., description="...")]
-    section :
+# class Student(BaseModel):
+#
+#     id : Annotated[str , Field(..., description="provide your ID ")]
+#     name : Annotated[str, Field(..., description="provide your name")]
+#     classes : Annotated[str , Field(..., description="...")]
+#     section :
