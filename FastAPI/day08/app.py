@@ -1,3 +1,4 @@
+from operator import gt
 from fastapi import FastAPI
 from pydantic import BaseModel, Field, computed_field
 from typing import Literal , Annotated
@@ -7,10 +8,19 @@ from starlette.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 # ----------------------------------------
-# import ml model
+# import ml model (load safely and provide helpful error if sklearn is missing)
 # ----------------------------------------
-with open("pridict_model.pkl", "rb") as f:
-    model = pickle.load(f)
+model = None
+try:
+    with open("pridict_model.pkl", "rb") as f:
+        model = pickle.load(f)
+except ModuleNotFoundError as e:
+    model = None
+    missing = getattr(e, "name", str(e))
+    print(f"Model load failed: missing module {missing}. Install scikit-learn in the environment.")
+except Exception as e:
+    model = None
+    print("Model load failed:", e)
 
 
 app = FastAPI()
@@ -26,22 +36,20 @@ tier_2_cities = [
 # pydantic model to validate incoming data
 
 class UserInput(BaseModel):
-    age:Annotated[int, Field(..., min_length=1, description="Age in years")]
-    weight:Annotated[float, Field(..., min_length=3, description="Weight in kg")]
-    height:Annotated[float, Field(..., min_length=3, description="Height in m")]
-    income_lpa: Annotated[float , Field(..., min_length=1, description="Income in lpa")]
+    age:Annotated[int, Field(..., gt=1, description="Age in years")]
+    weight:Annotated[float, Field(..., gt=0, description="Weight in kg")]
+    height:Annotated[float, Field(..., gt=0, description="Height in m")]
+    income_lpa: Annotated[float , Field(..., gt=0, description="Income in lpa")]
     smoker:Annotated[bool, Field(..., description="Smoker or not")]
-    city:Annotated[str, Field(..., min_length=4, description="City")]
+    city:Annotated[str, Field(..., min_length=1, description="City")]
     occupation: Annotated[Literal['retired', 'unemployed', 'business owner', 'government job', 'student', 'freelancer', 'private job'], Field(..., description='your work occupation')]
 # using literal-> for giving options
 
     @computed_field
-    @property
     def bmi(self) -> float:
         return round(self.weight / (self.height ** 2), 2)
 
     @computed_field
-    @property
     def age_group(self) -> str:
         if self.age < 25:
             return "young"
@@ -52,7 +60,6 @@ class UserInput(BaseModel):
         return 'senior'
 
     @computed_field
-    @property
     def lifestyle_risk(self) -> str:
         if self.smoker and self.bmi > 30:
             return "high"
@@ -60,9 +67,10 @@ class UserInput(BaseModel):
             return "medium"
         else:
             return "low"
+        
 
     @computed_field
-    @property
+    
     def city_tier(self) -> int:
         if self.city in tier_1_cities:
             return 1
@@ -91,14 +99,25 @@ async def predict(data: UserInput):
     # input that will be going to model
     input_df = pd.DataFrame([{
         'bmi': data.bmi,
-        'age_group': data.age,
+        'age_group': data.age_group,
         'income_lpa': data.income_lpa,
         'city_tier': data.city_tier,
         'occupation': data.occupation
 
     }])
+    if model is None:
+        return JSONResponse(
+            status_code=500,
+            content={
+                "error": "Model not loaded. Ensure scikit-learn is installed in the environment (pip install scikit-learn)."
+            },
+        )
 
-    prediction = model.predict(input_df)[0]
+    raw_pred = model.predict(input_df)[0]
+    try:
+        # convert numpy types to native python types if needed
+        pred = raw_pred.item()
+    except Exception:
+        pred = raw_pred
 
-    return JSONResponse(status_code=200,
-                        content=prediction)
+    return JSONResponse(status_code=200, content={"prediction": pred})
